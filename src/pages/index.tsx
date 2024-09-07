@@ -21,7 +21,7 @@ export default function Home() {
   const [sekret, sekretLength, setSekretLength] = useSekretGenerator();
 
   return (
-    <main className='p-3 pt-10 h-screen'>
+    <main className='p-3 pt-3 h-screen'>
       <Head>
         <title>Secret - Generate Your Password</title>
         <meta
