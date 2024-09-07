@@ -42,7 +42,7 @@ export default function Home() {
         <p className='mb-10'>
           It is for your eyes only, we do not save anything.
         </p>
-        <div className='rounded-3xl bg-white p-3 flex flex-col gap-3 backdrop-blur-md bg-white/60 border border-zinc-200'>
+        <div className='generator rounded-3xl bg-white p-3 flex flex-col gap-3 backdrop-blur-md bg-white/70 border border-zinc-200'>
           <div className='flex gap-3'>
             {Object.keys(SEKRET_TYPES).map((type) => (
               <Button
