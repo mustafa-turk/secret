@@ -24,8 +24,11 @@ export default function Copy({ value }: Props) {
   return (
     <button
       className={classNames(
-        "bg-zinc-100 p-3 rounded-xl hover:bg-zinc-200 transition-[width] duration-300 ease-out w-[80px]",
-        { "w-[120px]": copyText === COPY_STATES.COPIED }
+        "bg-zinc-100 p-3 rounded-xl hover:bg-zinc-200 transition-colors duration-300 ease-out font-semibold",
+        {
+          "bg-green-600 hover:bg-green-600 text-white":
+            copyText === COPY_STATES.COPIED,
+        }
       )}
       onClick={handleCopy}
     >
