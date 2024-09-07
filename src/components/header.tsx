@@ -6,9 +6,14 @@ export default function Header() {
       <p className='font-black text-white text-xl tracking-tight uppercase'>
         Secret
       </p>
-      <button className='bg-zinc-800 p-1 rounded-full'>
+      <a
+        href='https://github.com/mustafa-turk/secret'
+        target='_blank'
+        rel='noreferrer'
+        className='bg-zinc-800 p-1 rounded-full'
+      >
         <GitIcon fill='#fff' size={26} />
-      </button>
+      </a>
     </div>
   );
 }
