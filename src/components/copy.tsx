@@ -21,13 +21,17 @@ export default function Copy({ value }: Props) {
     }, 3000);
   }
 
+  console.log(copyText === COPY_STATES.COPIED);
+
   return (
     <button
       className={classNames(
-        "bg-zinc-100 p-3 rounded-xl hover:bg-zinc-200 transition-colors duration-300 ease-out font-semibold",
+        "p-3 rounded-xl transition-colors duration-300 ease-out font-semibold",
         {
           "bg-green-600 hover:bg-green-600 text-white":
             copyText === COPY_STATES.COPIED,
+          "bg-zinc-100 hover:bg-zinc-200 text-black":
+            copyText === COPY_STATES.COPY,
         }
       )}
       onClick={handleCopy}
