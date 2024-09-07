@@ -21,8 +21,6 @@ export default function Copy({ value }: Props) {
     }, 2000);
   }
 
-  console.log(copyText === COPY_STATES.COPIED);
-
   return (
     <button
       className={classNames(

@@ -36,7 +36,7 @@ export default function Home() {
         <span className='bg-black bg-opacity-10 p-1 px-2 rounded-full text-xs inline-block mb-4 uppercase tracking-tight'>
           Open Source
         </span>
-        <h1 className='text-4xl font-black tracking-tight text-zinc-950 mb-4'>
+        <h1 className='text-4xl font-black tracking-tight text-zinc-950 mb-2'>
           Generate Your Password
         </h1>
         <p className='mb-10'>
@@ -74,7 +74,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className='text-zinc-500 text-center mt-10'>
+      <div className='text-zinc-500 text-center mt-10 text-sm'>
         Created by{" "}
         <a href='https://mustafaturk.com' target='_blank' rel='noreferrer'>
           Mustafa Türk
