@@ -18,7 +18,7 @@ export default function Copy({ value }: Props) {
     navigator.clipboard.writeText(value);
     setTimeout(() => {
       setCopyText(COPY_STATES.COPY);
-    }, 3000);
+    }, 2000);
   }
 
   console.log(copyText === COPY_STATES.COPIED);

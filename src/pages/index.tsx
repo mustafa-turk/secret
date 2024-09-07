@@ -33,10 +33,10 @@ export default function Home() {
       </Head>
       <div className='text-center'>
         <Header />
-        <span className='bg-black bg-opacity-10 p-1 px-2 rounded-full text-xs inline-block mb-2 uppercase tracking-tight'>
+        <span className='bg-black bg-opacity-10 p-1 px-2 rounded-full text-xs inline-block mb-4 uppercase tracking-tight'>
           Open Source
         </span>
-        <h1 className='text-4xl font-black tracking-tight text-zinc-950'>
+        <h1 className='text-4xl font-black tracking-tight text-zinc-950 mb-4'>
           Generate Your Password
         </h1>
         <p className='mb-10'>
