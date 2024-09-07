@@ -74,6 +74,12 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className='text-zinc-500 text-center mt-10'>
+        Created by{" "}
+        <a href='https://mustafaturk.com' target='_blank' rel='noreferrer'>
+          Mustafa Türk
+        </a>
+      </div>
     </main>
   );
 }
