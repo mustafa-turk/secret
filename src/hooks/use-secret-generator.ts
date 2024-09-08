@@ -1,16 +1,8 @@
 import { useEffect, useState } from "react";
 
-function createRandomString(length: number) {
-  const chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:,.<>?/`~";
-  let result = "";
-  const randomArray = new Uint8Array(length);
-  crypto.getRandomValues(randomArray);
-  randomArray.forEach((number) => {
-    result += chars[number % chars.length];
-  });
-  return result;
-}
+import createRandomString from "@/helpers/create-random-string";
+
+import { SECRET_LENGTH } from "@/constants";
 
 export default function useSecretGenerator(): [
   string,
@@ -18,7 +10,7 @@ export default function useSecretGenerator(): [
   () => void,
   (number: number) => void
 ] {
-  const [secretLength, setSecretLength] = useState(16);
+  const [secretLength, setSecretLength] = useState(SECRET_LENGTH.SHORT);
   const [secret, setSecret] = useState("");
 
   const generateSecret = () => {
