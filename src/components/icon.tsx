@@ -1,5 +1,5 @@
 import { FaGithub } from "react-icons/fa";
-import { IoRefreshOutline } from "react-icons/io5";
+import { GrRefresh } from "react-icons/gr";
 
 export const GitIcon = FaGithub;
-export const RefreshIcon = IoRefreshOutline;
+export const RefreshIcon = GrRefresh;
