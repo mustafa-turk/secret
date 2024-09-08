@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { motion } from "framer-motion";
 
 import Button from "@/components/button";
@@ -16,15 +15,6 @@ export default function Home() {
 
   return (
     <div className='p-3 h-screen'>
-      <Head>
-        <title>Secret - Generate Your Password</title>
-        <meta
-          property='og:title'
-          content='Secret - Generate Your Password'
-          key='title'
-        />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-      </Head>
       <div className='text-center'>
         <Header />
         <span className='font-semibold bg-black bg-opacity-10 p-1 px-2 rounded-full text-xs inline-block mb-4 uppercase tracking-tight'>
