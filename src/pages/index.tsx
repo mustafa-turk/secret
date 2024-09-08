@@ -53,11 +53,11 @@ export default function Home() {
                   duration: 0.7,
                   ease: "backInOut",
                 }}
-                className='rounded-full w-full text-xl font-semibold pl-2 focus:outline-none bg-white text-zinc-950 disabled:opacity-100'
-                value={secret}
+                className='rounded-full w-full text-xl font-semibold pl-2 focus:outline-none bg-white text-zinc-950 disabled:opacity-100 overflow-x-scroll'
+                value={secret + "    "}
                 disabled
               />
-              <div className='absolute right-0 h-full top-0 w-[40px] bg-gradient-to-r from-white/10 to-white' />
+              <div className='absolute right-0 h-full top-0 w-[30px] bg-gradient-to-r from-transparent to-white' />
             </div>
             <Refresh onClick={regenerateSecret} />
             <Copy value={secret} />
