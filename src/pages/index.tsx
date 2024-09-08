@@ -1,27 +1,21 @@
+import Head from "next/head";
+import { motion } from "framer-motion";
+
 import Button from "@/components/button";
 import Copy from "@/components/copy";
-
-import useSekretGenerator from "../hooks/use-sekret-generator";
 import Header from "@/components/header";
-import Head from "next/head";
+import Refresh from "@/components/refresh";
 
-const SEKRET_TYPES = {
-  SHORT: "Short",
-  MEDIUM: "Medium",
-  LONG: "Long",
-};
+import useSecretGenerator from "@/hooks/use-secret-generator";
 
-const SEKRET_LENGTH = {
-  SHORT: 16,
-  MEDIUM: 32,
-  LONG: 64,
-};
+import { SECRET_LENGTH, SECRET_TYPES } from "@/constants";
 
 export default function Home() {
-  const [sekret, sekretLength, setSekretLength] = useSekretGenerator();
+  const [secret, secretLength, regenerateSecret, setSecretLength] =
+    useSecretGenerator();
 
   return (
-    <main className='p-3 h-screen'>
+    <div className='p-3 h-screen'>
       <Head>
         <title>Secret - Generate Your Password</title>
         <meta
@@ -33,44 +27,50 @@ export default function Home() {
       </Head>
       <div className='text-center'>
         <Header />
-        <span className='bg-black bg-opacity-10 p-1 px-2 rounded-full text-xs inline-block mb-4 uppercase tracking-tight'>
+        <span className='font-semibold bg-black bg-opacity-10 p-1 px-2 rounded-full text-xs inline-block mb-4 uppercase tracking-tight'>
           Open Source
         </span>
         <h1 className='text-4xl font-black tracking-tight text-zinc-950 mb-2'>
           Generate Your Password
         </h1>
-        <p className='mb-10'>
-          It is for your eyes only, we do not save anything.
-        </p>
+        <p className='mb-10'>Your secure passwords, only for your eyes.</p>
         <div className='generator rounded-3xl bg-white p-3 flex flex-col gap-3 backdrop-blur-md bg-white/70 border border-zinc-200'>
           <div className='flex gap-3'>
-            {Object.keys(SEKRET_TYPES).map((type) => (
+            {Object.keys(SECRET_TYPES).map((type) => (
               <Button
                 key={type}
                 onClick={() =>
-                  setSekretLength(
-                    SEKRET_LENGTH[type as keyof typeof SEKRET_LENGTH]
+                  setSecretLength(
+                    SECRET_LENGTH[type as keyof typeof SECRET_LENGTH]
                   )
                 }
                 selected={
-                  SEKRET_LENGTH[type as keyof typeof SEKRET_LENGTH] ===
-                  sekretLength
+                  SECRET_LENGTH[type as keyof typeof SECRET_LENGTH] ===
+                  secretLength
                 }
               >
-                {SEKRET_TYPES[type as keyof typeof SEKRET_TYPES]}
+                {SECRET_TYPES[type as keyof typeof SECRET_TYPES]}
               </Button>
             ))}
           </div>
           <div className='flex bg-white rounded-2xl p-1 border border-zinc-200 items-center'>
             <div className='w-full mr-2 relative'>
-              <input
-                className='rounded-full w-full text-xl font-bold pl-2 focus:outline-none bg-white text-zinc-950 disabled:opacity-100'
-                value={sekret}
+              <motion.input
+                key={secret}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.7,
+                  ease: "backInOut",
+                }}
+                className='rounded-full w-full text-xl font-semibold pl-2 focus:outline-none bg-white text-zinc-950 disabled:opacity-100'
+                value={secret}
                 disabled
               />
               <div className='absolute right-0 h-full top-0 w-[40px] bg-gradient-to-r from-white/10 to-white' />
             </div>
-            <Copy value={sekret} />
+            <Refresh onClick={regenerateSecret} />
+            <Copy value={secret} />
           </div>
         </div>
       </div>
@@ -80,6 +80,6 @@ export default function Home() {
           Mustafa Türk
         </a>
       </div>
-    </main>
+    </div>
   );
 }

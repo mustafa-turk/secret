@@ -1,0 +1,33 @@
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: fade 0.5s linear;
+  animation-fill-mode: both;
+}
+
+canvas {
+  pointer-events: none;
+  background-color: whitesmoke;
+  background-image: linear-gradient(135deg, #43cbff 10%, #9708cc 100%);
+  cursor: pointer;
+}
+
+.canvas-wrapper {
+  filter: blur(46px) saturate(1.2);
+  position: absolute;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+.generator {
+  animation: fade 1s linear;
+  animation-fill-mode: both;
+}

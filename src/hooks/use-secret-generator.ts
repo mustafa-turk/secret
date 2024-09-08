@@ -12,18 +12,22 @@ function createRandomString(length: number) {
   return result;
 }
 
-export default function useSekretGenerator(): [
+export default function useSecretGenerator(): [
   string,
   number,
+  () => void,
   (number: number) => void
 ] {
-  const [sekretLength, setSekretLength] = useState(16);
-  const [sekret, setSekret] = useState("");
+  const [secretLength, setSecretLength] = useState(16);
+  const [secret, setSecret] = useState("");
+
+  const generateSecret = () => {
+    setSecret(createRandomString(secretLength));
+  };
 
   useEffect(() => {
-    const generatedSekret = createRandomString(sekretLength);
-    setSekret(generatedSekret);
-  }, [sekretLength]);
+    setSecret(createRandomString(secretLength));
+  }, [secretLength]);
 
-  return [sekret, sekretLength, setSekretLength];
+  return [secret, secretLength, generateSecret, setSecretLength];
 }
