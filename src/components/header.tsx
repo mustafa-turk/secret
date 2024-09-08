@@ -10,7 +10,6 @@ export default function Header() {
         href='https://github.com/mustafa-turk/secret'
         target='_blank'
         rel='noreferrer'
-        className='bg-zinc-800 p-1 rounded-full'
       >
         <GitIcon fill='#fff' size={26} />
       </a>
