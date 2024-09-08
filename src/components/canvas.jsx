@@ -4,8 +4,8 @@ const CircleAnimation = () => {
   const canvasRef = useRef(null);
   const circlesRef = useRef([]);
   const mouseRef = useRef({ x: null, y: null });
-  const animationRef = useRef(null); // Store the animation frame ID here
-  const resizeTimeoutRef = useRef(null); // Store timeout ID for debouncing
+  const animationRef = useRef(null);
+  const resizeTimeoutRef = useRef(null);
   const maxRadius = window.innerWidth / 6;
   const circleCount = Math.floor(window.innerWidth / 9);
 
@@ -63,13 +63,11 @@ const CircleAnimation = () => {
     run() {
       const canvas = canvasRef.current;
 
-      // detect collision
       if (this.side().right > canvas.width || this.side().left < 0)
         this.dx *= -1;
       if (this.side().bottom > canvas.height || this.side().top < 0)
         this.dy *= -1;
 
-      // increase size
       if (
         mouseRef.current.x != null &&
         mouseRef.current.y != null &&
@@ -84,7 +82,6 @@ const CircleAnimation = () => {
         this.r -= 1;
       }
 
-      // change position
       this.x += this.dx;
       this.y += this.dy;
 
@@ -99,7 +96,6 @@ const CircleAnimation = () => {
 
     const ctx = canvas.getContext("2d");
 
-    // Clear the existing circles array
     circlesRef.current = [];
 
     for (let i = 0; i < circleCount; i++) {
@@ -113,30 +109,25 @@ const CircleAnimation = () => {
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    // Start the animation loop
     animationRef.current = requestAnimationFrame(animate);
   };
 
-  // Debounce the resize event
   const handleResize = () => {
-    // Clear the previous timeout
     if (resizeTimeoutRef.current) {
       clearTimeout(resizeTimeoutRef.current);
     }
 
-    // Set a new timeout to run after the user has stopped resizing
     resizeTimeoutRef.current = setTimeout(() => {
       const canvas = canvasRef.current;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      // Cancel the previous animation frame before starting a new one
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
 
       initCanvas();
-    }, 250); // Adjust the delay as needed (250ms here)
+    }, 250);
   };
 
   const handleMouseMove = (e) => {
@@ -151,7 +142,6 @@ const CircleAnimation = () => {
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      // Clean up event listeners and cancel the animation frame when the component unmounts
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
       if (animationRef.current) {

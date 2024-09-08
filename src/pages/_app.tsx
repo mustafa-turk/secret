@@ -24,13 +24,18 @@ export default function App({ Component, pageProps }: AppProps) {
           content='Secret - Generate Your Password'
           key='title'
         />
+        <meta
+          property='og:description'
+          content='Your secure passwords, only for your eyes.'
+          key='description'
+        />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <main className={inter.className}>
         <div className='canvas-wrapper'>
           <BackgroundCanvas />
         </div>
-        <div className='max-w-screen-sm mx-auto'>
+        <div className='max-w-screen-sm mx-auto p-3 h-screen text-center'>
           <Component {...pageProps} />
         </div>
       </main>

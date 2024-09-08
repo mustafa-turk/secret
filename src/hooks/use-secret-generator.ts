@@ -10,8 +10,8 @@ export default function useSecretGenerator(): [
   () => void,
   (number: number) => void
 ] {
-  const [secretLength, setSecretLength] = useState(SECRET_LENGTH.SHORT);
-  const [secret, setSecret] = useState("");
+  const [secretLength, setSecretLength] = useState<number>(SECRET_LENGTH.SHORT);
+  const [secret, setSecret] = useState<string>("");
 
   const generateSecret = () => {
     setSecret(createRandomString(secretLength));
