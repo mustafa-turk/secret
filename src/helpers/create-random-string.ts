@@ -1,24 +1,31 @@
-export default function createRandomString(length: number) {
-  const lowerCase = "abcdefghijklmnopqrstuvwxyz";
-  const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const numbers = "0123456789";
-  const specialChars = "!@#$%^&*()_+[]{}|;:,.<>?";
+export default function createRandomString(length: number): string {
+  const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+  const digits = "0123456789";
+  const specialChars = "!@#$%^&*()-_=+[]{}|;:',.<>?/`~";
 
-  const getRandomChar = (charset: string) =>
-    charset[Math.floor(Math.random() * charset.length)];
+  const getRandomChar = (chars: string) => {
+    const randomIndex =
+      crypto.getRandomValues(new Uint32Array(1))[0] % chars.length;
+    return chars[randomIndex];
+  };
 
-  let password = [
-    getRandomChar(lowerCase),
-    getRandomChar(upperCase),
-    getRandomChar(numbers),
+  const password = [
+    getRandomChar(uppercaseChars),
+    getRandomChar(lowercaseChars),
+    getRandomChar(digits),
     getRandomChar(specialChars),
   ];
 
-  const allChars = lowerCase + upperCase + numbers + specialChars;
-
+  const allChars = uppercaseChars + lowercaseChars + digits + specialChars;
   for (let i = password.length; i < length; i++) {
     password.push(getRandomChar(allChars));
   }
-  password = password.sort(() => Math.random() - 0.5);
+
+  for (let i = password.length - 1; i > 0; i--) {
+    const j = crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1);
+    [password[i], password[j]] = [password[j], password[i]];
+  }
+
   return password.join("");
 }
