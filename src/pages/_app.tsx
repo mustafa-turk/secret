@@ -1,14 +1,11 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import { Inter } from "next/font/google";
 import type { AppProps } from "next/app";
+
+import { defaultFont } from "@/helpers/fonts";
 
 import "@/styles/globals.css";
 import "@/styles/animation.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-});
 
 const BackgroundCanvas = dynamic(() => import("@/components/canvas"), {
   ssr: false,
@@ -31,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
-      <main className={inter.className}>
+      <main className={defaultFont.className}>
         <div className='canvas-wrapper'>
           <BackgroundCanvas />
         </div>

@@ -17,9 +17,6 @@ export default function Home() {
     <>
       <Section>
         <Header />
-        <span className='font-medium bg-black bg-opacity-10 p-1 px-2 rounded-full text-xs inline-block mb-4 uppercase tracking-tight text-zinc-500'>
-          Open Source
-        </span>
         <h1 className='text-4xl font-black tracking-tight text-zinc-950 mb-2'>
           Generate Your Password
         </h1>
@@ -54,8 +51,8 @@ export default function Home() {
       </Section>
 
       <Section>
-        <div className='text-zinc-500 text-center mt-10 text-sm'>
-          <a href='https://mustafaturk.com' target='_blank' rel='noreferrer'>
+        <div className='text-center mt-10 text-sm'>
+          <a href='https://mustafaturk.com' target='_blank' rel='noreferrer' className="opacity-50 hover:opacity-100 transition-opacity">
             Created by Mustafa Türk
           </a>
         </div>
