@@ -24,7 +24,7 @@ canvas {
   filter: blur(46px) saturate(1.2);
   position: absolute;
   z-index: -1;
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
 .generator {
